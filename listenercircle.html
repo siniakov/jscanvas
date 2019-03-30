@@ -48,20 +48,22 @@ colorPicker.addEventListener('change', function() {
 // code for color picker referenced from: https://stackoverflow.com/questions/45361101/event-for-change-input-type-color-javascript 
 
 
-window.addEventListener('touchstart', function (e) { //equivalent to mousedown
-      myGameArea.x = e.pageX;
-      myGameArea.y = e.pageY;
+//next section for mobile using "touch" listeners
+window.addEventListener('touchstart', function (e) { //equivalent to mousedown - start tracking position in space
+      canvas.x = e.pageX;
+      canvas.y = e.pageY;
     })
-window.addEventListener('touchmove', function (e) {
+window.addEventListener('touchmove', function (e) { //equivalent to mousemove - want to track position in space
       canvas.x = e.touches[0].screenX;
       canvas.y = e.touches[0].screenY;
     })
-window.addEventListener('touchend', function (e) { //equivalent to mouseup
-      myGameArea.x = false;
-      myGameArea.y = false;
+window.addEventListener('touchend', function (e) { //equivalent to mouseup - you're not moving
+      canvas.x = false;
+      canvas.y = false;
     })
 
-document.body.addEventListener("touchstart", function (e) { //next 3 listeners make sure you're not scrolling if you're touching the canvas
+//next 3 listeners make sure you're not scrolling if you're touching the canvas
+document.body.addEventListener("touchstart", function (e) { 
 	if (e.target == canvas) {
 		e.preventDefault();
 	}
@@ -76,6 +78,11 @@ document.body.addEventListener("touchmove", function (e) {
 		e.preventDefault();
 	}
 }, false);
+
+window.addEventListener("orientationchange", function(e) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+})
 
 
 //canvas.addEventListener("touchstart", function (e) {
@@ -148,13 +155,6 @@ if (e.keyCode == "40"){
 
 	}
 	}
-
-
-window.addEventListener("orientationchange", function(e) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-})
-
 
 draw()
 })
