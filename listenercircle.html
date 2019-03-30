@@ -81,10 +81,10 @@ document.addEventListener("touchmove", function (e) {
 	}
 }, false);
 
-window.addEventListener("orientationchange", function(e) {
+window.addEventListener("orientationchange", function(e) { //wipes content of canvas, reloads page on orientation change
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-})
+    document.reload();
+ })
 
 window.addEventListener('mousemove', function (e) {
 console.log(e.pageX);
@@ -140,5 +140,3 @@ draw()
 
 </body>
 </html>
-    
-perspective change, clearing canvas --> orientationchange (event) --> add eventlistener to window, listen for oirnetiation change event, do something to clear canvas, function: reload the page
