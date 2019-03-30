@@ -50,12 +50,13 @@ colorPicker.addEventListener('change', function() {
 
 //next section for mobile using "touch" listeners
 window.addEventListener('touchstart', function (e) { //equivalent to mousedown - start tracking position in space
-      canvas.x = e.pageX;
-      canvas.y = e.pageY;
+      x = e.pageX;
+      y = e.pageY;
     })
+
 window.addEventListener('touchmove', function (e) { //equivalent to mousemove - want to track position in space
-      canvas.x = e.touches[0].screenX;
-      canvas.y = e.touches[0].screenY;
+      x = e.touches[0].screenX;
+      y = e.touches[0].screenY;
     })
 window.addEventListener('touchend', function (e) { //equivalent to mouseup - you're not moving
       canvas.x = false;
@@ -63,17 +64,17 @@ window.addEventListener('touchend', function (e) { //equivalent to mouseup - you
     })
 
 //next 3 listeners make sure you're not scrolling if you're touching the canvas
-document.body.addEventListener("touchstart", function (e) { 
+document.addEventListener("touchstart", function (e) { 
 	if (e.target == canvas) {
 		e.preventDefault();
 	}
 }, false);
-document.body.addEventListener("touchend", function (e) {
+document.addEventListener("touchend", function (e) {
 	if (e.target == canvas) {
 		e.preventDefault();
 	}
 }, false);
-document.body.addEventListener("touchmove", function (e) {
+document.addEventListener("touchmove", function (e) {
 	if (e.target == canvas) {
 		e.preventDefault();
 	}
