@@ -48,47 +48,6 @@ colorPicker.addEventListener('change', function() {
 // code for color picker referenced from: https://stackoverflow.com/questions/45361101/event-for-change-input-type-color-javascript 
 
 
-//next section for mobile using "touch" listeners
-//window.addEventListener('touchstart', function (e) { //equivalent to mousedown - start tracking position in space
-//      x = e.pageX;
-//      y = e.pageY;
-//    })
-
-//window.addEventListener('touchmove', function (e) { //equivalent to mousemove - want to track position in space
-//      x = e.pageX;
-//      y = e.pageY;
-//      draw();
-//    })
-//window.addEventListener('touchend', function (e) { //equivalent to mouseup - you're not moving
-//      canvas.x = false;
-//      canvas.y = false;
-//    })
-
-//next 3 listeners make sure you're not scrolling if you're touching the canvas
-document.addEventListener("touchstart", function (e) { 
-	x = e.pageX;
-    y = e.pageY;
-    draw();
-	if (e.target == canvas) {
-		e.preventDefault(); //preventDefault prevents  scrolling from happening if your finger's in the canvas --> added for all the touch events
-	}
-}, false);
-document.addEventListener("touchend", function (e) {
-	canvas.x = false;
-	canvas.y = false;
-	if (e.target == canvas) {
-		e.preventDefault();
-	}
-}, false);
-document.addEventListener("touchmove", function (e) {
-	x = e.pageX;
-    y = e.pageY;
-    draw();
-	if (e.target == canvas) {
-		e.preventDefault();
-	}
-}, false);
-
 window.addEventListener("orientationchange", function(e) { //wipes content of canvas, reloads page on orientation change
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     document.reload();
@@ -140,6 +99,48 @@ if (e.keyCode == "40"){
 
 	}
 	}
+
+
+//next section for mobile using "touch" listeners
+//window.addEventListener('touchstart', function (e) { //equivalent to mousedown - start tracking position in space
+//      x = e.pageX;
+//      y = e.pageY;
+//    })
+
+//window.addEventListener('touchmove', function (e) { //equivalent to mousemove - want to track position in space
+//      x = e.pageX;
+//      y = e.pageY;
+//      draw();
+//    })
+//window.addEventListener('touchend', function (e) { //equivalent to mouseup - you're not moving
+//      canvas.x = false;
+//      canvas.y = false;
+//    })
+
+//next 3 listeners make sure you're not scrolling if you're touching the canvas
+document.addEventListener("touchstart", function (e) { 
+	x = e.pageX;
+    y = e.pageY;
+    draw();
+	if (e.target == canvas) {
+		e.preventDefault(); //preventDefault prevents  scrolling from happening if your finger's in the canvas --> added for all the touch events
+	}
+}, false);
+document.addEventListener("touchend", function (e) {
+	canvas.x = false;
+	canvas.y = false;
+	if (e.target == canvas) {
+		e.preventDefault();
+	}
+}, false);
+document.addEventListener("touchmove", function (e) {
+	x = e.pageX;
+    y = e.pageY;
+    draw();
+	if (e.target == canvas) {
+		e.preventDefault();
+	}
+}, false);	
 
 draw()
 })
