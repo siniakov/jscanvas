@@ -54,11 +54,11 @@ colorPicker.addEventListener('change', function() {
 //      y = e.pageY;
 //    })
 
-window.addEventListener('touchmove', function (e) { //equivalent to mousemove - want to track position in space
-      x = e.pageX;
-      y = e.pageY;
-      draw();
-    })
+//window.addEventListener('touchmove', function (e) { //equivalent to mousemove - want to track position in space
+//      x = e.pageX;
+//      y = e.pageY;
+//      draw();
+//    })
 //window.addEventListener('touchend', function (e) { //equivalent to mouseup - you're not moving
 //      canvas.x = false;
 //      canvas.y = false;
@@ -66,16 +66,24 @@ window.addEventListener('touchmove', function (e) { //equivalent to mousemove - 
 
 //next 3 listeners make sure you're not scrolling if you're touching the canvas
 document.addEventListener("touchstart", function (e) { 
+	x = e.pageX;
+    y = e.pageY;
+    draw();
 	if (e.target == canvas) {
-		e.preventDefault();
+		e.preventDefault(); //preventDefault prevents  scrolling from happening if your finger's in the canvas --> added for all the touch events
 	}
 }, false);
 document.addEventListener("touchend", function (e) {
+	canvas.x = false;
+	canvas.y = false;
 	if (e.target == canvas) {
 		e.preventDefault();
 	}
 }, false);
 document.addEventListener("touchmove", function (e) {
+	x = e.pageX;
+    y = e.pageY;
+    draw();
 	if (e.target == canvas) {
 		e.preventDefault();
 	}
@@ -86,7 +94,7 @@ window.addEventListener("orientationchange", function(e) { //wipes content of ca
     document.reload();
  })
 
-window.addEventListener('mousemove', function (e) {
+window.addEventListener('mousemove', function (e) { //using mouse to draw
 console.log(e.pageX);
 console.log(e.pageY);
 x = e.pageX;
@@ -94,7 +102,7 @@ y = e.pageY;
 draw()
 })
 
-window.addEventListener('keyup', function (e) {
+window.addEventListener('keyup', function (e) { //listening for keystrokes for color and pen size changes
 console.log(e.keyCode);
 if (e.keyCode == "66"){
 	color = "blue";
