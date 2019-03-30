@@ -48,7 +48,7 @@ colorPicker.addEventListener('change', function() {
 // code for color picker referenced from: https://stackoverflow.com/questions/45361101/event-for-change-input-type-color-javascript 
 
 
-window.addEventListener('touchstart', function (e) {
+window.addEventListener('touchstart', function (e) { //equivalent to mousedown
       myGameArea.x = e.pageX;
       myGameArea.y = e.pageY;
     })
@@ -56,26 +56,26 @@ window.addEventListener('touchmove', function (e) {
       canvas.x = e.touches[0].screenX;
       canvas.y = e.touches[0].screenY;
     })
-window.addEventListener('touchend', function (e) {
+window.addEventListener('touchend', function (e) { //equivalent to mouseup
       myGameArea.x = false;
       myGameArea.y = false;
     })
 
-document.body.addEventListener("touchstart", function (e) {
-				if (e.target == canvas) {
-					e.preventDefault();
-				}
-			}, false);
-			document.body.addEventListener("touchend", function (e) {
-				if (e.target == canvas) {
-					e.preventDefault();
-				}
-			}, false);
-			document.body.addEventListener("touchmove", function (e) {
-				if (e.target == canvas) {
-					e.preventDefault();
-				}
-			}, false);
+document.body.addEventListener("touchstart", function (e) { //next 3 listeners make sure you're not scrolling if you're touching the canvas
+	if (e.target == canvas) {
+		e.preventDefault();
+	}
+}, false);
+document.body.addEventListener("touchend", function (e) {
+	if (e.target == canvas) {
+		e.preventDefault();
+	}
+}, false);
+document.body.addEventListener("touchmove", function (e) {
+	if (e.target == canvas) {
+		e.preventDefault();
+	}
+}, false);
 
 
 //canvas.addEventListener("touchstart", function (e) {
