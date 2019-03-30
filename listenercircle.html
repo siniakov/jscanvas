@@ -106,12 +106,13 @@ if (e.keyCode == "40"){
 		alert("Sorry, we can't go smaller than that radius!");
 
 	}
-	//radius -= 5;
-	//if (radius = 0){
-	//	alert("Sorry, we can't go smaller than that radius!");
-	//	radius = 10;
-	//	console.log(radius);
 	}
+
+
+window.addEventListener("orientationchange", function(e) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+})
 
 draw()
 })
