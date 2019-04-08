@@ -102,20 +102,19 @@ if (e.keyCode == "40"){
 
 
 //next section for mobile using "touch" listeners
-//window.addEventListener('touchstart', function (e) { //equivalent to mousedown - start tracking position in space
-//      x = e.pageX;
-//      y = e.pageY;
-//    })
+window.addEventListener('touchstart', function (e) { //equivalent to mousedown - start tracking position in space
+      canvas.x = e.pageX;
+      canvas.y = e.pageY;
+    })
 
-//window.addEventListener('touchmove', function (e) { //equivalent to mousemove - want to track position in space
-//      x = e.pageX;
-//      y = e.pageY;
-//      draw();
-//    })
-//window.addEventListener('touchend', function (e) { //equivalent to mouseup - you're not moving
-//      canvas.x = false;
-//      canvas.y = false;
-//    })
+window.addEventListener('touchmove', function (e) { //equivalent to mousemove - want to track position in space
+      canvas.x = e.touches[0].pageX;
+      canvas.y = e.touches[0].pageY;
+    })
+window.addEventListener('touchend', function (e) { //equivalent to mouseup - you're not moving
+      canvas.x = false;
+      canvas.y = false;
+    })
 
 //next 3 listeners make sure you're not scrolling if you're touching the canvas
 document.addEventListener("touchstart", function (e) { 
